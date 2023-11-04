@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="temp.css">
+    <title>Temperature Converters</title>
+    
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <label for="temperatureInput">Enter temperature:</label>
+    <input type="text" id="temperatureInput">
+
+    <label for="conversionType">Choose conversion type:</label>
+    <select id="conversionType">
+        <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+        <option value="fahrenheitToCelsius">Fahrenheit to Celsius</option>
+        <option value="celsiusToKelvin">Celsius to Kelvin</option>
+        <option value="kelvinToCelsius">Kelvin to Celsius</option>
+    </select>
+
+    <button onclick="convertTemperature()">Convert</button>
+
+    <p id="result"></p>
+
+    <script>
+        function convertTemperature() 
+        {
+            var temperatureInput = document.getElementById("temperatureInput").value;
+            var conversionType = document.getElementById("conversionType").value;
+            var resultElement = document.getElementById("result");
+            var convertedTemperature;
+
+            if (isNaN(temperatureInput)) {
+                resultElement.textContent = "Please enter a valid number!";
+                return;
+            }
+
+            if (conversionType === "celsiusToFahrenheit") {
+                convertedTemperature = (parseFloat(temperatureInput) * 9/5) + 32;
+                resultElement.textContent = convertedTemperature + " °F";
+
+            } 
+
+            else if (conversionType === "fahrenheitToCelsius") {
+                convertedTemperature = (parseFloat(temperatureInput) - 32) * 5/9;
+                resultElement.textContent = convertedTemperature + " °C";
+            } 
+
+            else if (conversionType === "celsiusToKelvin") {
+                convertedTemperature = parseFloat(temperatureInput) + 273.15;
+                resultElement.textContent = convertedTemperature + " K";
+            } 
+            
+            else if (conversionType === "kelvinToCelsius") {
+                convertedTemperature = parseFloat(temperatureInput) - 273.15;
+                resultElement.textContent = convertedTemperature + " °C";
+            }
+        }
+    </script>
+</body>
+</html>
